@@ -166,7 +166,19 @@ Frontend: http://localhost:5173
 Optional API override:
 
 ```env
-VITE_API_URL=http://127.0.0.1:8000
+VITE_API_BASE_URL=http://127.0.0.1:8000
+```
+
+For a Render Static Site, set this environment variable to the deployed backend URL:
+
+```env
+VITE_API_BASE_URL=https://customer-support-ai-backend-2py4.onrender.com
+```
+
+For the Render backend service, set `CORS_ORIGINS` to a comma-separated list containing the frontend URL and local development URLs:
+
+```env
+CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173,https://your-frontend.onrender.com
 ```
 
 ## 🔌 Main API Routes

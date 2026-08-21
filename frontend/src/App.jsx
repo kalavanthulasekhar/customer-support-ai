@@ -9,8 +9,7 @@ import ComplaintPanel from "./components/ComplaintPanel";
 import AgentsPage from "./components/AgentsPage";
 
 import { sendMessage } from "./services/api";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+import API_BASE_URL from "./config/api";
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -176,7 +175,7 @@ function App() {
 
       // Save user message
       await axios.post(
-        `http://127.0.0.1:8000/conversations/${currentConversationId}/messages`,
+        `${API_BASE_URL}/conversations/${currentConversationId}/messages`,
         {
           sender: "user",
           message: message,
@@ -199,7 +198,7 @@ function App() {
 
       // Save AI response
       await axios.post(
-        `http://127.0.0.1:8000/conversations/${currentConversationId}/messages`,
+        `${API_BASE_URL}/conversations/${currentConversationId}/messages`,
         {
           sender: "bot",
           message: result.response,

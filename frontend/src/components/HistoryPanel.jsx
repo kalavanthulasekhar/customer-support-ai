@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 function HistoryPanel() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/history")
+      .get(`${API_BASE_URL}/history`)
       .then((res) => setHistory(res.data))
       .catch(console.error);
   }, []);

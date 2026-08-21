@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 function Sidebar({
   onSelectChat,
@@ -13,7 +14,7 @@ function Sidebar({
   const fetchConversations = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/conversations/"
+        `${API_BASE_URL}/conversations/`
       );
 
       setConversations(response.data);
@@ -47,7 +48,7 @@ function Sidebar({
   const handleNewChat = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/conversations/",
+        `${API_BASE_URL}/conversations/`,
         {
           title: "New Chat",
         }

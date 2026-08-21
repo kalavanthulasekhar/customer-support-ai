@@ -11,6 +11,7 @@ from app.api.notifications import router as notifications_router
 from app.api.auth import router as auth_router
 
 from database.db import init_db
+from app.core.config import settings
 
 init_db()
 from app.api.complaint import router as complaint_router
@@ -35,10 +36,7 @@ app.include_router(auth_router)
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173"
-    ],
+    allow_origins=[origin.strip() for origin in settings.CORS_ORIGINS.split(",") if origin.strip()],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
